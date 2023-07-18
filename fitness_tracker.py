@@ -12,5 +12,4 @@ mins = hours * 60  # Перевод из часов в минуты
 spent_calories = (0.035 * weight + speed ** 2 / height * (
         0.029 * weight)) * mins  # Вычисление количества потраченных килокалорий (согласно формуле Южного Методистского университета в Далласе)
 
-output = str(dist) + " " + str(spent_calories)
-print(output)
+print(f"Сегодня вы прошли {round(dist, 2)} км и затратили {round(spent_calories, 2)} килокалорий")
