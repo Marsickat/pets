@@ -21,7 +21,7 @@ elif dist > 2:
 else:
     congrats = "Лежать тоже полезно. Главное - участие, а не победа!"
 
-print(f"Сегодня вы прошли {steps} шагов.")
-print(f"Пройденная дистанция {round(dist, 2)} км.")
-print(f"Вы сожгли {round(spent_calories, 2)} ккал.")
-print(congrats)
+print(f"""Сегодня вы прошли {steps} шагов.
+Пройденная дистанция {dist:.2f} км.
+Вы сожгли {spent_calories:.2f} ккал.
+{congrats}""")
