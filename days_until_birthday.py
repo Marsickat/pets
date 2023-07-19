@@ -1,14 +1,20 @@
 import datetime as dt
 
+FORMAT = "%d.%m.%Y"
 
-def get_days_to_birthday(date_birthday: dt.date) -> int:
-    """Получает дату дня рождения и возвращает количество оставшихся дней до этой даты.
 
+def get_days_to_birthday(name: str, date_birthday: str) -> str:
+    """Получает имя и дату дня рождения и возвращает строку с информацией о количестве оставшихся дней до дня рождения.
+
+    :param name: Имя
+    :type name: str
     :param date_birthday: Дата дня рождения
-    :type date_birthday: datetime.date
-    :return: Количество оставшихся дней до дня рождения
-    :rtype: int
+    :type date_birthday: str
+    :return: Строка с информацией о количестве дней оставшихся дней до дня рождения
+    :rtype: str
     """
+    date_birthday = dt.datetime.strptime(date_birthday, FORMAT).date()  # Перевод даты из строки в объект date
+
     today = dt.date.today()  # Получение сегодняшней даты
     today_year = today.year  # Получение текущего года
     date_birthday = date_birthday.replace(year=today_year)  # Заменяем текущее значение года в дне рождения
@@ -20,11 +26,10 @@ def get_days_to_birthday(date_birthday: dt.date) -> int:
     else:
         days_left = (date_birthday - today).days
 
-    return days_left
+    return f"{name}, до твоего дня рождения осталось дней: {days_left}"
 
 
-vlad_birthday = dt.date(1996, 10, 9)  # День рождения Влада
-igor_birthday = dt.date(1998, 6, 28)  # День рождения Игоря
+data = [("Влад", "9.10.1996"), ("Игорь", "28.6.1998"), ("Кирилл", "2.7.1998")]
 
-
-print(get_days_to_birthday(vlad_birthday), get_days_to_birthday(igor_birthday), sep="\n")
+for name, birthday in data:
+    print(get_days_to_birthday(name, birthday))
