@@ -12,7 +12,14 @@ def get_days_to_birthday(date_birthday: dt.date) -> int:
     today = dt.date.today()  # Получение сегодняшней даты
     today_year = today.year  # Получение текущего года
     date_birthday = date_birthday.replace(year=today_year)  # Заменяем текущее значение года в дне рождения
-    days_left = (date_birthday - today).days  # Вычисляем количество оставшихся дней
+
+    # Проверка на уже прошедший в этом году день рождения
+    if today > date_birthday:
+        date_birthday = date_birthday.replace(year=today_year + 1)
+        days_left = (date_birthday - today).days
+    else:
+        days_left = (date_birthday - today).days
+
     return days_left
 
 
