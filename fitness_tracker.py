@@ -122,14 +122,17 @@ def get_achievement(dist: float) -> str:
     return achievement
 
 
+# Первый запрос
 time = "9:36:02"  # Входное время
 steps = 15302  # Входное кол-во шагов
 accept_package(time, steps)  # Обрабатываем входные данные
 
+# Второй запрос, должен добавиться в storage_dict
 time = "15:45:12"
 steps = 5000
 accept_package(time, steps)
 
+# Третий запрос, не должен добавиться в storage_dict, т.к. время его запроса раньше последнего
 time = "10:45:12"
 steps = 5000
 accept_package(time, steps)
